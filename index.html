@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ryan Merrill</title>
+<meta name="description" content="Ryan Merrill — Duke mechanical engineering student working at the intersection of data, people and product.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a single scrolling page, like walking a trail — a ridge-line hero, then
+   About → Work → Experience → Leadership → Off the clock → Contact, on one 68rem column. */
+:root{
+  --bg:#F1F4F2;        /* morning fog */
+  --surface:#E6ECE8;   /* lichen */
+  --fg:#16211E;        /* spruce ink */
+  --muted:#56655F;
+  --line:#C9D3CE;
+  --accent:#2C6A57;    /* Blue Ridge forest */
+  --accent-2:#3F6E8F;  /* distant ridge blue */
+  --display:"Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --body:"Source Serif 4", Georgia, "Times New Roman", serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#101614; --surface:#18211E; --fg:#E4EBE7; --muted:#97A7A0;
+    --line:#2A3632; --accent:#7CC2AA; --accent-2:#86AFCF; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#101614; --surface:#18211E; --fg:#E4EBE7; --muted:#97A7A0;
+  --line:#2A3632; --accent:#7CC2AA; --accent-2:#86AFCF; color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:1.09rem;line-height:1.65}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+.wrap{max-width:68rem;margin:0 auto;padding-left:max(20px, env(safe-area-inset-left, 0px));padding-right:max(20px, env(safe-area-inset-right, 0px))}
+
+/* nav */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top, 0px);z-index:10;background:var(--bg)}
+.nav{position:sticky;top:env(safe-area-inset-top, 0px);z-index:5;background:color-mix(in srgb, var(--bg) 88%, transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:.8rem}
+.mark{font-family:var(--display);font-weight:700;font-size:1.05rem;color:var(--fg);text-decoration:none;letter-spacing:-.01em}
+.nav ul{display:flex;gap:1.4rem;list-style:none;margin:0;padding:0;font-family:var(--mono);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase}
+.nav ul a{color:var(--muted);text-decoration:none}
+.nav ul a:hover{color:var(--fg)}
+@media (max-width:640px){.nav ul li:not(.keep){display:none}}
+
+/* hero */
+.hero{padding-block:clamp(3.5rem,9vw,7rem) 0;position:relative}
+.eyebrow{font-family:var(--mono);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(3rem,10vw,7.2rem);line-height:.92;letter-spacing:-.035em;margin:.6rem 0 1.4rem;text-wrap:balance}
+h1 span{color:var(--accent)}
+.lede{font-size:clamp(1.15rem,2.2vw,1.4rem);max-width:36ch;color:var(--fg);margin:0 0 2rem;text-wrap:pretty}
+.cta{display:flex;flex-wrap:wrap;gap:.8rem}
+.btn{font-family:var(--mono);font-size:.82rem;letter-spacing:.04em;padding:.8rem 1.2rem;border-radius:999px;text-decoration:none;border:1px solid var(--fg);color:var(--fg);transition:background .2s,color .2s}
+.btn.solid{background:var(--fg);color:var(--bg)}
+.btn:hover{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.ridge{display:block;width:100%;height:auto;margin-top:clamp(2.5rem,6vw,4.5rem)}
+.ridge path{fill:none;stroke-width:1.4;vector-effect:non-scaling-stroke}
+.coords{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem;font-family:var(--mono);font-size:.72rem;color:var(--muted);letter-spacing:.05em;padding-block:.7rem 0;border-top:1px solid var(--line)}
+
+/* sections */
+section{padding-block:clamp(3.5rem,8vw,6rem)}
+.sec-head{display:grid;grid-template-columns:minmax(0,14rem) minmax(0,1fr);gap:2rem;align-items:baseline;margin-bottom:2.4rem}
+.sec-head .eyebrow{margin:0}
+h2{font-family:var(--display);font-weight:600;font-size:clamp(1.9rem,4.4vw,2.9rem);line-height:1.05;letter-spacing:-.025em;margin:0;text-wrap:balance}
+h3{font-family:var(--display);font-weight:600;font-size:1.35rem;line-height:1.2;letter-spacing:-.01em;margin:0}
+@media (max-width:720px){.sec-head{grid-template-columns:1fr;gap:.6rem}}
+
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,14rem) minmax(0,1fr);gap:2rem}
+.about-body{max-width:62ch}
+.about-body p{margin:0 0 1.1rem}
+.facts{list-style:none;margin:0;padding:0;display:grid;gap:1rem;font-family:var(--mono);font-size:.8rem;color:var(--muted)}
+.facts strong{display:block;color:var(--fg);font-weight:500;font-size:.88rem}
+@media (max-width:720px){.about{grid-template-columns:1fr}.facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+.side{display:grid;gap:1.6rem;align-content:start}
+.portrait{margin:0;position:relative;max-width:100%;isolation:isolate}
+.portrait img{display:block;width:100%;aspect-ratio:1;object-fit:cover;border-radius:50% 50% 6px 6px;filter:saturate(.95)}
+.portrait::after{content:"";position:absolute;inset:auto -10px -10px 10px;height:60%;border:1px solid var(--accent);border-top:none;border-radius:0 0 8px 8px;z-index:-1}
+@media (max-width:720px){.side{grid-template-columns:minmax(0,11rem) minmax(0,1fr);align-items:start}.side .facts{grid-template-columns:1fr}}
+/* projects */
+.project{display:grid;grid-template-columns:minmax(0,14rem) minmax(0,1fr);gap:2rem;padding-block:2.2rem;border-top:1px solid var(--line)}
+.project:last-child{border-bottom:1px solid var(--line)}
+.project .meta{font-family:var(--mono);font-size:.78rem;color:var(--muted);display:grid;gap:.35rem;align-content:start}
+.project .meta .tag{color:var(--accent)}
+.project h3{font-size:clamp(1.4rem,2.6vw,1.8rem);margin-bottom:1rem}
+.psr{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.6rem}
+.psr dt{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-2);margin-bottom:.35rem}
+.psr dd{margin:0;font-size:1rem;line-height:1.55}
+.psr .result dd{color:var(--fg);font-weight:600}
+@media (max-width:820px){.psr{grid-template-columns:1fr;gap:1rem}}
+@media (max-width:720px){.project{grid-template-columns:1fr;gap:.8rem}}
+
+/* experience */
+.band{background:var(--surface)}
+.timeline{list-style:none;margin:0;padding:0}
+.role{display:grid;grid-template-columns:minmax(0,14rem) minmax(0,1fr);gap:2rem;padding-block:1.5rem;border-top:1px solid var(--line)}
+.role .when{font-family:var(--mono);font-size:.78rem;color:var(--muted);font-variant-numeric:tabular-nums;padding-top:.3rem}
+.role .org{font-style:italic;color:var(--muted);margin:.15rem 0 .6rem}
+.role p.desc{margin:0;max-width:62ch}
+@media (max-width:720px){.role{grid-template-columns:1fr;gap:.3rem}}
+
+/* leadership */
+.lead-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.lead{background:var(--bg);padding:1.8rem;display:grid;gap:.6rem;align-content:start}
+.lead .stat{font-family:var(--display);font-weight:700;font-size:2.4rem;line-height:1;color:var(--accent);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.lead .stat small{font-size:.9rem;font-family:var(--mono);font-weight:400;color:var(--muted);letter-spacing:0;margin-left:.3rem}
+.lead p{margin:0;font-size:1rem}
+@media (max-width:720px){.lead-grid{grid-template-columns:1fr}}
+
+/* off the clock */
+.chips{display:flex;flex-wrap:wrap;gap:.6rem;list-style:none;margin:0;padding:0}
+.chips li{font-family:var(--mono);font-size:.82rem;padding:.55rem .95rem;border:1px solid var(--line);border-radius:999px}
+.chips li b{font-weight:500;color:var(--accent)}
+
+/* contact */
+.contact{padding-block:clamp(4rem,10vw,7rem)}
+.contact h2{font-size:clamp(2.4rem,7vw,4.8rem);letter-spacing:-.035em;max-width:14ch}
+.contact-row{display:flex;flex-wrap:wrap;align-items:center;gap:1rem;margin-top:2rem}
+.email{font-family:var(--mono);font-size:clamp(.95rem,2.4vw,1.2rem);user-select:all;border-bottom:1px solid var(--accent);padding-bottom:2px;overflow-wrap:anywhere}
+button.copy{font-family:var(--mono);font-size:.78rem;background:none;border:1px solid var(--line);color:var(--fg);border-radius:999px;padding:.5rem .9rem;cursor:pointer}
+button.copy:hover{border-color:var(--fg)}
+footer{border-top:1px solid var(--line);padding-block:1.6rem;font-family:var(--mono);font-size:.74rem;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.6rem}
+</style>
+</head>
+<body>
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="mark" href="#top">Ryan Merrill</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li class="keep"><a href="#work">Work</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li class="keep"><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <p class="eyebrow">Mechanical Engineering · Duke University · Class of 2028</p>
+    <h1>Ryan<br>Merrill<span>.</span></h1>
+    <p class="lede">I break systems down to find where they can work better, then bring the data and the people along to fix them.</p>
+    <div class="cta">
+      <a class="btn solid" href="#work">See my work</a>
+      <a class="btn" href="resume.pdf">Résumé (PDF)</a>
+      <a class="btn" href="https://linkedin.com/in/ryanmerrill21" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+  </div>
+  <div class="wrap">
+    <svg class="ridge" viewBox="0 0 1200 220" preserveAspectRatio="none" aria-hidden="true">
+      <path stroke="var(--accent-2)" opacity=".35" d="M0 120 C80 100 140 70 220 82 S360 40 450 58 S600 30 700 52 S860 28 960 60 S1110 50 1200 70"/>
+      <path stroke="var(--accent-2)" opacity=".55" d="M0 150 C90 128 170 110 260 118 S400 80 500 98 S650 70 760 96 S900 80 1000 104 S1120 92 1200 108"/>
+      <path stroke="var(--accent)" opacity=".7" d="M0 178 C100 160 180 140 290 150 S430 118 540 136 S700 112 800 138 S940 126 1040 146 S1140 136 1200 148"/>
+      <path stroke="var(--accent)" d="M0 206 C110 192 200 176 320 184 S470 160 580 176 S740 156 840 178 S980 168 1080 186 S1160 180 1200 186"/>
+    </svg>
+    <div class="coords"><span>Brevard, NC → Durham, NC</span><span>35.23° N, 82.73° W</span></div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap about">
+    <div class="side">
+    <figure class="portrait"><img src="headshot.jpg" alt="Ryan Merrill" width="560" height="560"></figure>
+    <ul class="facts">
+      <li><strong>Major</strong>Mechanical Engineering</li>
+      <li><strong>Minor</strong>Theater Studies</li>
+      <li><strong>Certificate</strong>Innovation &amp; Entrepreneurship, Product Mgmt.</li>
+      <li><strong>Seeking</strong>Summer 2027 internships</li>
+    </ul>
+    </div>
+    <div class="about-body">
+      <p class="eyebrow">About</p>
+      <h2 style="margin-bottom:1.4rem">An engineer who likes the people side of the problem.</h2>
+      <p>I grew up in Brevard, a small mountain town in Western North Carolina, and I'm now a third-year mechanical engineering student at Duke's Pratt School of Engineering. Engineering taught me to take systems apart. Working with people taught me that most systems only improve when the people inside them buy in.</p>
+      <p>That's the thread through my work: a safety dashboard on a data center job site, a product feature pitched to Ancestry's product team, and a 150-member student organization I lead for rural students like me. I'm looking for roles in product and analytics where I can keep doing both halves.</p>
+    </div>
+  </div>
+</section>
+
+<section id="work" class="band">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Selected work</p>
+      <h2>Projects</h2>
+    </div>
+
+    <article class="project">
+      <div class="meta"><span class="tag">Data · Operations</span><span>U.S. Engineering Innovations</span><span>May – Aug 2026</span></div>
+      <div>
+        <h3>Safety KPI Dashboard</h3>
+        <dl class="psr">
+          <div><dt>Problem</dt><dd>Field safety data at a data center build lived in scattered reports, so leadership couldn't see when or where incidents clustered.</dd></div>
+          <div><dt>What I did</dt><dd>Built an Excel dashboard joining field hours, incident types, safety reports and day-of-week trends to track Total Case Incident Rate and trade-partner performance.</dd></div>
+          <div class="result"><dt>Result</dt><dd>Became a biweekly report to leadership and led to a softer Monday start for field crews.</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="meta"><span class="tag">Product · Research</span><span>Team Leader</span><span>Aug – Dec 2025</span></div>
+      <div>
+        <h3>New Feature for Newspapers.com</h3>
+        <dl class="psr">
+          <div><dt>Problem</dt><dd>Find a feature that would make a historical newspaper archive more valuable to its users.</dd></div>
+          <div><dt>What I did</dt><dd>Led a cross-functional team through user research and market analysis, then built interactive software prototypes of the concept.</dd></div>
+          <div class="result"><dt>Result</dt><dd>Presented the proposal to the Ancestry.com product team, showing feasibility and product-market fit.</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="meta"><span class="tag">Program design</span><span>Duke Student Affairs</span><span>Jan – May 2026</span></div>
+      <div>
+        <h3>Inter-University Staff Tour</h3>
+        <dl class="psr">
+          <div><dt>Problem</dt><dd>Staff visiting from other universities had no structured way to learn how Duke supports its students.</dd></div>
+          <div><dt>What I did</dt><dd>Worked with administrators on processes and rollout, designed the tour route and stops, and collected student testimonies.</dd></div>
+          <div class="result"><dt>Result</dt><dd>A new tour program set to launch by the end of the year.</dd></div>
+        </dl>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Experience</p>
+      <h2>Where I've worked</h2>
+    </div>
+    <ol class="timeline">
+      <li class="role"><span class="when">08/2026 – Now</span><div><h3>Admissions Officer Intern</h3><p class="org">Duke Undergraduate Admissions</p><p class="desc">Help admissions officers build a framework for analyzing application data, and lead information sessions for groups of 50 to 100 families.</p></div></li>
+      <li class="role"><span class="when">05/2026 – 08/2026</span><div><h3>Project Engineer Intern</h3><p class="org">U.S. Engineering Innovations · Montgomery, AL</p><p class="desc">Ran root cause analyses on operational data, reviewed piping specs and submittals before installation, and standardized documentation across field and office teams.</p></div></li>
+      <li class="role"><span class="when">05/2025 – Now</span><div><h3>Undergraduate Student Assistant</h3><p class="org">Duke Student Affairs</p><p class="desc">Coordinate facilities, scheduling and resources for student programs, and act as the liaison between students, staff and university partners.</p></div></li>
+      <li class="role"><span class="when">09/2024 – Now</span><div><h3>Tour Guide &amp; Recruitment Team</h3><p class="org">Duke Admissions &amp; Pratt School of Engineering</p><p class="desc">Lead candidate evaluation for about 180 tour guide applicants and give campus tours to prospective students and families.</p></div></li>
+      <li class="role"><span class="when">06/2025 – 07/2025</span><div><h3>Teaching Assistant &amp; Facilitator</h3><p class="org">Girls Exploring Math · Durham, NC</p><p class="desc">Ran daily hands-on math projects for 30 middle schoolers with a team of four.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section id="leadership" class="band">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Leadership</p>
+      <h2>Building community</h2>
+    </div>
+    <div class="lead-grid">
+      <div class="lead"><span class="stat">150<small>members</small></span><h3>Rural at Duke, President</h3><p>Lead the executive team and a $10,000 annual budget, and partner with the national STARS network to support rural students on campus.</p></div>
+      <div class="lead"><span class="stat">87.5%<small>acceptance</small></span><h3>LAUNCH STEM Mentorship</h3><p>Mentored a high school senior through college applications with weekly essay, interview and résumé coaching.</p></div>
+      <div class="lead"><span class="stat">65<small>students</small></span><h3>FEMMES Capstone Leader</h3><p>Designed and ran "Electrifying Art," a hands-on science activity for Durham students, from supply planning to facilitation.</p></div>
+      <div class="lead"><span class="stat">Outreach</span><h3>Duke Honor Council</h3><p>Partnered with student groups and the Office of Student Conduct on campus events about academic integrity.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="off">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Off the clock</p>
+      <h2>When I'm not working</h2>
+    </div>
+    <ul class="chips">
+      <li><b>Running</b> · training for a half marathon</li>
+      <li>Musical theater</li>
+      <li>Baking</li>
+      <li>Pickleball</li>
+      <li>Tenting</li>
+      <li><b>Reading</b> · Outlander</li>
+      <li><b>Film</b> · The Odyssey</li>
+    </ul>
+  </div>
+</section>
+
+<section id="contact" class="contact band">
+  <div class="wrap">
+    <p class="eyebrow">Contact</p>
+    <h2>Let's talk about what you're building.</h2>
+    <div class="contact-row">
+      <span class="email" id="email">ryan.merrill@duke.edu</span>
+      <button class="copy" id="copyBtn" type="button">Copy email</button>
+      <a class="btn" href="https://linkedin.com/in/ryanmerrill21" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap"><span>© 2026 Ryan Merrill</span><span>Made in Durham, NC</span></div>
+</footer>
+
+<script>
+document.getElementById('copyBtn').addEventListener('click', function(){
+  var btn=this, text=document.getElementById('email').textContent;
+  function done(){btn.textContent='Copied';setTimeout(function(){btn.textContent='Copy email'},1600)}
+  function fallback(){var r=document.createRange();r.selectNodeContents(document.getElementById('email'));var s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='Selected — press Ctrl/⌘ C'}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done,fallback)}else{fallback()}
+});
+</script>
+</body>
+</html>
